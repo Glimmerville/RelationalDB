@@ -6,7 +6,7 @@ using System.Web;
 
 namespace NewMVCproject53.Models
 {
-    public partial class Sales
+    public class Sales
     {
         [Key]
         public int SalesId { get; set; }

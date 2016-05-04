@@ -1,0 +1,34 @@
+﻿@model NewMVCproject53.Models.ZipsToCity
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ZipsToCity</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Citycode.CityName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Citycode.CityName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zippitycode.ZipCodeValue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zippitycode.ZipCodeValue)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ZipsToCityId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

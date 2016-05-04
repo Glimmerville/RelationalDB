@@ -1,7 +1,7 @@
 ﻿@model NewMVCproject53.Models.Cities
 
 @{
-    ViewBag.Title = "Cities: Delete";
+    ViewBag.Title = "Delete";
 }
 
 <h2>Delete</h2>
@@ -11,6 +11,14 @@
     <h4>Cities</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CityName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CityName)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.ImgSrc)
         </dt>
@@ -25,14 +33,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.State)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Zip)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Zip)
         </dd>
 
         <dt>

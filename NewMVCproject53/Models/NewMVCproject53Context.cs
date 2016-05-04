@@ -26,5 +26,11 @@ namespace NewMVCproject53.Models
         public System.Data.Entity.DbSet<NewMVCproject53.Models.Cities> Cities { get; set; }
 
         public System.Data.Entity.DbSet<NewMVCproject53.Models.Sales> Sales { get; set; }
+
+        public System.Data.Entity.DbSet<NewMVCproject53.Models.State> States { get; set; }
+
+        public System.Data.Entity.DbSet<NewMVCproject53.Models.Zipcode> Zipcodes { get; set; }
+
+        public System.Data.Entity.DbSet<NewMVCproject53.Models.ZipsToCity> ZipsToCities { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<NewMVCproject53.Models.Sales>
 
 @{
-    ViewBag.Title = "Sales";
+    ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
@@ -12,7 +12,16 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Customer.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Property.Title)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.SalesPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalesDate)
         </th>
         <th></th>
     </tr>
@@ -20,7 +29,16 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.Customer.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Property.Title)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.SalesPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalesDate)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.SalesId }) |

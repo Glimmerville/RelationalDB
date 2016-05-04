@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<NewMVCproject53.Models.Cities>
 
 @{
-    ViewBag.Title = "Cities: Index";
+    ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
@@ -21,9 +21,6 @@
             @Html.DisplayNameFor(model => model.State)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Zip)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
@@ -38,13 +35,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.CityName)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.ImgSrc)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.State)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Zip)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)

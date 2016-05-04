@@ -46,7 +46,7 @@ namespace NewMVCproject53.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CityId,CityName,ImgSrc,State,Zip,Description,Lat,Long")] Cities cities)
+        public ActionResult Create([Bind(Include = "CityId,CityName,ImgSrc,State,Description,Lat,Long")] Cities cities)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace NewMVCproject53.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CityId,CityName,ImgSrc,State,Zip,Description,Lat,Long")] Cities cities)
+        public ActionResult Edit([Bind(Include = "CityId,CityName,ImgSrc,State,Description,Lat,Long")] Cities cities)
         {
             if (ModelState.IsValid)
             {

@@ -1,7 +1,7 @@
 ﻿@model NewMVCproject53.Models.Sales
 
 @{
-    ViewBag.Title = "Sales: Delete";
+    ViewBag.Title = "Delete";
 }
 
 <h2>Delete</h2>
@@ -12,11 +12,35 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.Customer.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Property.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Property.Title)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.SalesPrice)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.SalesPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalesDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalesDate)
         </dd>
 
     </dl>

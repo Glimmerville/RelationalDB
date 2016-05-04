@@ -10,116 +10,107 @@ using NewMVCproject53.Models;
 
 namespace NewMVCproject53.Controllers
 {
-    public class SalesController : Controller
+    public class ZipcodesController : Controller
     {
         private NewMVCproject53Context db = new NewMVCproject53Context();
 
-        // GET: Sales
+        // GET: Zipcodes
         public ActionResult Index()
         {
-            var sales = db.Sales.Include(s => s.Customer).Include(s => s.Property);
-            return View(sales.ToList());
+            return View(db.Zipcodes.ToList());
         }
 
-        // GET: Sales/Details/5
+        // GET: Zipcodes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Sales sales = db.Sales.Find(id);
-            if (sales == null)
+            Zipcode zipcode = db.Zipcodes.Find(id);
+            if (zipcode == null)
             {
                 return HttpNotFound();
             }
-            return View(sales);
+            return View(zipcode);
         }
 
-        // GET: Sales/Create
+        // GET: Zipcodes/Create
         public ActionResult Create()
         {
-            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "FirstName");
-            ViewBag.PropertyId = new SelectList(db.PropertyModels, "PropertyID", "Title");
             return View();
         }
 
-        // POST: Sales/Create
+        // POST: Zipcodes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SalesId,CustomerId,PropertyId,SalesPrice,SalesDate")] Sales sales)
+        public ActionResult Create([Bind(Include = "ZipCodeId,ZipCodeValue")] Zipcode zipcode)
         {
             if (ModelState.IsValid)
             {
-                db.Sales.Add(sales);
+                db.Zipcodes.Add(zipcode);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "FirstName", sales.CustomerId);
-            ViewBag.PropertyId = new SelectList(db.PropertyModels, "PropertyID", "Title", sales.PropertyId);
-            return View(sales);
+            return View(zipcode);
         }
 
-        // GET: Sales/Edit/5
+        // GET: Zipcodes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Sales sales = db.Sales.Find(id);
-            if (sales == null)
+            Zipcode zipcode = db.Zipcodes.Find(id);
+            if (zipcode == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "FirstName", sales.CustomerId);
-            ViewBag.PropertyId = new SelectList(db.PropertyModels, "PropertyID", "Title", sales.PropertyId);
-            return View(sales);
+            return View(zipcode);
         }
 
-        // POST: Sales/Edit/5
+        // POST: Zipcodes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SalesId,CustomerId,PropertyId,SalesPrice,SalesDate")] Sales sales)
+        public ActionResult Edit([Bind(Include = "ZipCodeId,ZipCodeValue")] Zipcode zipcode)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(sales).State = EntityState.Modified;
+                db.Entry(zipcode).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "FirstName", sales.CustomerId);
-            ViewBag.PropertyId = new SelectList(db.PropertyModels, "PropertyID", "Title", sales.PropertyId);
-            return View(sales);
+            return View(zipcode);
         }
 
-        // GET: Sales/Delete/5
+        // GET: Zipcodes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Sales sales = db.Sales.Find(id);
-            if (sales == null)
+            Zipcode zipcode = db.Zipcodes.Find(id);
+            if (zipcode == null)
             {
                 return HttpNotFound();
             }
-            return View(sales);
+            return View(zipcode);
         }
 
-        // POST: Sales/Delete/5
+        // POST: Zipcodes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Sales sales = db.Sales.Find(id);
-            db.Sales.Remove(sales);
+            Zipcode zipcode = db.Zipcodes.Find(id);
+            db.Zipcodes.Remove(zipcode);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -4,14 +4,15 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-
 namespace NewMVCproject53.Models
 {
-    public class Transportation
+    public class State
     {
         [Key]
-        public int TransportID { get; set; }
-        public string Type { get; set; }
+        public int StateId { get; set; }
+
+        public string StateValue { get; set; }
+
 
     }
 }

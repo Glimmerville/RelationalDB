@@ -9,7 +9,7 @@ namespace NewMVCproject53.Models
     public class PropertyModel
     {
         [Key]
-        public int PropertyID { get; set; }
+        public int PropertyId { get; set; }
         public string Title { get; set; }
         public string ImageSource { get; set; }
         public string Description { get; set; }

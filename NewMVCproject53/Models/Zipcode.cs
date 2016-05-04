@@ -11,7 +11,7 @@ namespace NewMVCproject53.Models
         [Key]
         public int ZipCodeId { get; set; }
 
-        //do I need this? yes
+        //Actual Zip Code!
         public string ZipCodeValue { get; set; }
 
     }

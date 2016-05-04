@@ -10,116 +10,116 @@ using NewMVCproject53.Models;
 
 namespace NewMVCproject53.Controllers
 {
-    public class SalesController : Controller
+    public class ZipsToCitiesController : Controller
     {
         private NewMVCproject53Context db = new NewMVCproject53Context();
 
-        // GET: Sales
+        // GET: ZipsToCities
         public ActionResult Index()
         {
-            var sales = db.Sales.Include(s => s.Customer).Include(s => s.Property);
-            return View(sales.ToList());
+            var zipsToCities = db.ZipsToCities.Include(z => z.Citycode).Include(z => z.Zippitycode);
+            return View(zipsToCities.ToList());
         }
 
-        // GET: Sales/Details/5
+        // GET: ZipsToCities/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Sales sales = db.Sales.Find(id);
-            if (sales == null)
+            ZipsToCity zipsToCity = db.ZipsToCities.Find(id);
+            if (zipsToCity == null)
             {
                 return HttpNotFound();
             }
-            return View(sales);
+            return View(zipsToCity);
         }
 
-        // GET: Sales/Create
+        // GET: ZipsToCities/Create
         public ActionResult Create()
         {
-            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "FirstName");
-            ViewBag.PropertyId = new SelectList(db.PropertyModels, "PropertyID", "Title");
+            ViewBag.CityId = new SelectList(db.Cities, "CityId", "CityName");
+            ViewBag.ZipCodeId = new SelectList(db.Zipcodes, "ZipCodeId", "ZipCodeValue");
             return View();
         }
 
-        // POST: Sales/Create
+        // POST: ZipsToCities/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SalesId,CustomerId,PropertyId,SalesPrice,SalesDate")] Sales sales)
+        public ActionResult Create([Bind(Include = "ZipsToCityId,ZipCodeId,CityId")] ZipsToCity zipsToCity)
         {
             if (ModelState.IsValid)
             {
-                db.Sales.Add(sales);
+                db.ZipsToCities.Add(zipsToCity);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "FirstName", sales.CustomerId);
-            ViewBag.PropertyId = new SelectList(db.PropertyModels, "PropertyID", "Title", sales.PropertyId);
-            return View(sales);
+            ViewBag.CityId = new SelectList(db.Cities, "CityId", "CityName", zipsToCity.CityId);
+            ViewBag.ZipCodeId = new SelectList(db.Zipcodes, "ZipCodeId", "ZipCodeValue", zipsToCity.ZipCodeId);
+            return View(zipsToCity);
         }
 
-        // GET: Sales/Edit/5
+        // GET: ZipsToCities/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Sales sales = db.Sales.Find(id);
-            if (sales == null)
+            ZipsToCity zipsToCity = db.ZipsToCities.Find(id);
+            if (zipsToCity == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "FirstName", sales.CustomerId);
-            ViewBag.PropertyId = new SelectList(db.PropertyModels, "PropertyID", "Title", sales.PropertyId);
-            return View(sales);
+            ViewBag.CityId = new SelectList(db.Cities, "CityId", "CityName", zipsToCity.CityId);
+            ViewBag.ZipCodeId = new SelectList(db.Zipcodes, "ZipCodeId", "ZipCodeValue", zipsToCity.ZipCodeId);
+            return View(zipsToCity);
         }
 
-        // POST: Sales/Edit/5
+        // POST: ZipsToCities/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SalesId,CustomerId,PropertyId,SalesPrice,SalesDate")] Sales sales)
+        public ActionResult Edit([Bind(Include = "ZipsToCityId,ZipCodeId,CityId")] ZipsToCity zipsToCity)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(sales).State = EntityState.Modified;
+                db.Entry(zipsToCity).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "FirstName", sales.CustomerId);
-            ViewBag.PropertyId = new SelectList(db.PropertyModels, "PropertyID", "Title", sales.PropertyId);
-            return View(sales);
+            ViewBag.CityId = new SelectList(db.Cities, "CityId", "CityName", zipsToCity.CityId);
+            ViewBag.ZipCodeId = new SelectList(db.Zipcodes, "ZipCodeId", "ZipCodeValue", zipsToCity.ZipCodeId);
+            return View(zipsToCity);
         }
 
-        // GET: Sales/Delete/5
+        // GET: ZipsToCities/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Sales sales = db.Sales.Find(id);
-            if (sales == null)
+            ZipsToCity zipsToCity = db.ZipsToCities.Find(id);
+            if (zipsToCity == null)
             {
                 return HttpNotFound();
             }
-            return View(sales);
+            return View(zipsToCity);
         }
 
-        // POST: Sales/Delete/5
+        // POST: ZipsToCities/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Sales sales = db.Sales.Find(id);
-            db.Sales.Remove(sales);
+            ZipsToCity zipsToCity = db.ZipsToCities.Find(id);
+            db.ZipsToCities.Remove(zipsToCity);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
